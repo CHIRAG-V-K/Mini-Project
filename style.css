@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  font-family: "Heebo", sans-serif;
+}
+
+.landing {
+  min-height: 100vh;
+  background: url(https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+    center;
+  background-size: cover;
+  padding: 0rem 5rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 10vh;
+}
+
+.nav-links {
+  display: flex;
+  list-style-type: none;
+}
+
+a {
+  padding-left: 1.5rem;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#logo{
+   font-family: "Lobster", cursive;
+   font-size: 2em;
+}
+
+.big-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-family: "Lobster", cursive;
+  font-size: 5rem;
+  color: rgb(61, 61, 61);
+  transform: translate(-50%, -40%);
+}
+
+.intro{
+   background: black;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.slider{
+   background: rgb(163, 162, 226);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   transform: translateY(100%);
+}
+
+.intro-text{
+   color: rgb(206, 140, 140);
+   font-family: "Heebo", sans-serif;
+   font-size: 3rem;
+   
+}
+
+.hide{
+   background: black;
+   overflow: hidden;
+}
+
+.hide span{
+   display: inline-block;
+   transform: translateY(100%);
+   ;}
