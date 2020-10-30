@@ -16,11 +16,12 @@ main {
   padding: 0rem 5rem;
 }
 
-.form-field {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.logino {
+  min-height: 100vh;
+  background: url(https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+    center;
+  background-size: cover;
+  padding: 0rem 5rem;
 }
 
 nav {
@@ -82,7 +83,9 @@ a {
 .intro-text {
   color: rgb(206, 140, 140);
   font-family: "Heebo", sans-serif;
-  font-size: 3rem;
+}
+.text {
+  font-size: 8rem !important;
 }
 
 .hide {
