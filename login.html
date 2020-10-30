@@ -1,0 +1,96 @@
+<!-- login page -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <!-- login page-->
+    <main>
+      <section class="landing">
+        <nav>
+          <h1 id="logo">Project Logo</h1>
+          <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a target="_blank" href="about.html">ABOUT</a></li>
+            <li><a target="_blank" href="signup.html">SIGN UP</a></li>
+          </ul>
+        </nav>
+
+        <!-- login-form -->
+        <div>
+          <form method="POST" action="submit.php" class="form-field">
+            <table class="form-table">
+              <tr>
+                <td><label for="#fnmae">First Name : </label></td>
+                <td>
+                  <input id="fname" name="firstname" type="text" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="#lname">Last Name : </label>
+                </td>
+                <td>
+                  <input id="lname" name="lastname" type="text" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="#Email">Email:</label>
+                </td>
+                <td>
+                  <input id="Email" name="email" type="text" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="#Password">Password: </label>
+                </td>
+                <td>
+                  <input id="Password" name="password" type="text" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="#Conpassword">Confirm password : </label>
+                </td>
+                <td>
+                  <input id="Conpassword" name="conpassword" type="text" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <!-- empty-space -->
+                </td>
+                <td>
+                  <input
+                    style="background: green"
+                    type="button"
+                    value="Login"
+                  />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

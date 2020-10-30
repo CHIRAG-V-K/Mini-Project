@@ -16,6 +16,13 @@ main {
   padding: 0rem 5rem;
 }
 
+.form-field {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -35,9 +42,9 @@ a {
   text-decoration: none;
 }
 
-#logo{
-   font-family: "Lobster", cursive;
-   font-size: 2em;
+#logo {
+  font-family: "Lobster", cursive;
+  font-size: 2em;
 }
 
 .big-text {
@@ -50,41 +57,40 @@ a {
   transform: translate(-50%, -40%);
 }
 
-.intro{
-   background: black;
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.intro {
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.slider{
-   background: rgb(163, 162, 226);
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   transform: translateY(100%);
+.slider {
+  background: rgb(163, 162, 226);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
 }
 
-.intro-text{
-   color: rgb(206, 140, 140);
-   font-family: "Heebo", sans-serif;
-   font-size: 3rem;
-   
+.intro-text {
+  color: rgb(206, 140, 140);
+  font-family: "Heebo", sans-serif;
+  font-size: 3rem;
 }
 
-.hide{
-   background: black;
-   overflow: hidden;
+.hide {
+  background: black;
+  overflow: hidden;
 }
 
-.hide span{
-   display: inline-block;
-   transform: translateY(100%);
-   ;}
+.hide span {
+  display: inline-block;
+  transform: translateY(100%);
+}
