@@ -10,15 +10,16 @@ main {
 
 .landing {
   min-height: 100vh;
-  background: url(https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+  background: url(https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
     center;
   background-size: cover;
   padding: 0rem 5rem;
+  text-align: center;
 }
 
-.logino {
+.login {
   min-height: 100vh;
-  background: url(https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+  background: url(https://images.pexels.com/photos/5149754/pexels-photo-5149754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
     center;
   background-size: cover;
   padding: 0rem 5rem;
@@ -45,17 +46,19 @@ a {
 
 #logo {
   font-family: "Lobster", cursive;
-  font-size: 2em;
+  font-size: 4em;
 }
 
 .big-text {
+  
   position: absolute;
   top: 40%;
   left: 50%;
   font-family: "Lobster", cursive;
-  font-size: 5rem;
-  color: rgb(61, 61, 61);
+  font-size: 7rem;
+  color: rgb(32, 0, 238);
   transform: translate(-50%, -40%);
+  
 }
 
 .intro {
