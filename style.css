@@ -4,16 +4,12 @@
   box-sizing: border-box;
 }
 
-main {
-  font-family: "Heebo", sans-serif;
-}
 
 .landing {
   min-height: 100vh;
   background: url(https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
     center;
   background-size: cover;
-  padding: 0rem 5rem;
   text-align: center;
 }
 
@@ -32,32 +28,21 @@ nav {
   min-height: 10vh;
 }
 
-.nav-links {
-  display: flex;
-  list-style-type: none;
-}
-
-a {
-  padding-left: 1.5rem;
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
-}
 
 #logo {
   font-family: "Lobster", cursive;
-  font-size: 4em;
+  font-size: 2.5em;
 }
 
-.big-text {
-  
+
+.headerset {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   font-family: "Lobster", cursive;
-  font-size: 7rem;
+  font-size: 5rem;
   color: rgb(32, 0, 238);
-  transform: translate(-50%, -40%);
+  transform: translate( -50%, -50%);
   
 }
 
@@ -88,7 +73,7 @@ a {
   font-family: "Heebo", sans-serif;
 }
 .text {
-  font-size: 8rem !important;
+  font-size: 6rem !important;
 }
 
 .hide {
@@ -100,3 +85,4 @@ a {
   display: inline-block;
   transform: translateY(100%);
 }
+
