@@ -18,9 +18,9 @@ $password = $_POST['password'];
 
 $query ="INSERT INTO users (firstname,lastname,Email,password) 
 VALUES ('$firstname','$lastname','$email','$password')";
-echo "$query";
+
 mysqli_query($conn,$query);
 
 header('location:index.html');
-
+  
 ?>
