@@ -13,7 +13,7 @@ mysqli_select_db($conn,'hospital_management');
 $email = $_POST['email'];
 $a_password = $_POST['password'];
 
-$sql = "SELECT * FROM admin";
+$sql = "SELECT * FROM  admin";
 
 $result = mysqli_query($conn,$sql);
 
