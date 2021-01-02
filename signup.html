@@ -27,9 +27,9 @@
     <div class="landing">
       <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
 
-         <div class="container">
-           <a href="index.html" class="navbar-brand text-warning">&#9855
-             HOSPITAL MANAGEMENT</a>
+        <div class="container">
+          <a href="index.html" class="navbar-brand text-warning">&#9855
+            HOSPITAL MANAGEMENT</a>
 
             <button class="navbar-toggler " type="button" data-toggle="collapse"
             data-target="#collapsenavbar">
@@ -44,15 +44,15 @@
                 <li class="nav-item">
                   <a href="about.html" class="nav-link pr-5">ABOUT</a>
                 </li>                 
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a href="signup.html" class="nav-link pr-5">PATIENT SIGNUP</a>
                 </li>                 
-                 <li class="nav-item ">
+                <li class="nav-item ">
                   <a href="login.html" class="nav-link pr-5">LOGIN</a>
                 </li>
               </ul>
             </div>
-         </div>
+        </div>
       </nav>
 
         <!-- sign up form -->
@@ -83,7 +83,7 @@
                 <label>Email:</label>
                 <input
                   name="email"
-                  type="text"
+                  type="email"
                   class="form-control"
                   placeholder="E-mail"
                 />
@@ -93,7 +93,7 @@
                 <label>Password: </label>
                 <input
                   name="password"
-                  type="text"
+                  type="password"
                   class="form-control"
                   placeholder="Password"
                 />
@@ -103,20 +103,30 @@
                 <label>Phone Number: </label>
                 <input
                   name="phone"
-                  type="text"
+                  type="number"
                   class="form-control"
                   placeholder="Phone Number"
                 />
               </div>
 
               <div class="form-group">
-                <label>Gender: </label>
+                <label>Gender:</label>
+              </br> 
                 <input
                   name="gender"
-                  type="text"
-                  class="form-control"
-                  placeholder="Gender"
-                />
+                  type="radio"
+                  value="male"
+                  />MALE </br> 
+                  <input
+                  name="gender"
+                  type="radio"
+                  value="female"
+                  />FEMALE </br> 
+                  <input
+                  name="gender"
+                  type="radio"
+                  value="other"
+                  />OTHER
               </div>
 
               <div class="form-group">
@@ -133,7 +143,7 @@
                 <label>Date_Of_Birth: </label>
                 <input
                   name="dob"
-                  type="text"
+                  type="date"
                   class="form-control"
                   placeholder="Date_Of_Birth"
                 />
@@ -145,7 +155,6 @@
             </form>
           </div>
         </section>
-      </section>
     </main>
   </body>
 </html>
