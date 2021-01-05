@@ -52,7 +52,9 @@ else {
 
    if ($row = mysqli_fetch_assoc($result)) {
       // Password check and email check
-      if ($password == $row['p_password'] && $email == $row['email']) {
+
+      $_SESSION['email'] = $row['email'];
+      if ($password == $row['p_password'] && $email ==  $_SESSION['email']) {
       include('pat-dashboard.php');
       }
       else {

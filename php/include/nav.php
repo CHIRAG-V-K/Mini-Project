@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
 
            <div class="container">
-             <a href="index.html" class="navbar-brand text-warning">&#9855
+             <a href="../index.html" class="navbar-brand text-warning">&#9855
                HOSPITAL MANAGEMENT</a>
 
               <button class="navbar-toggler " type="button" data-toggle="collapse"
