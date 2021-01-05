@@ -1,9 +1,11 @@
-<!-- login page -->
+<!-- sign up page -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" 
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
       rel="stylesheet"
@@ -12,85 +14,74 @@
       href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <title>Login</title>
   </head>
   <body>
-    <!-- login page-->
-    <main>
-      <section class="landing">
-        <nav>
-          <h1 id="logo">Project Logo</h1>
-          <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
-            <li><a target="_blank" href="about.html">ABOUT</a></li>
-            <li><a target="_blank" href="signup.html">SIGN UP</a></li>
-          </ul>
-        </nav>
+    <!-- Sign up page-->
+    <div class="landing">
+      <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
 
-        <!-- login-form -->
-        <div>
-          <form method="POST" action="submit.php" class="form-field">
-            <table class="form-table">
-              <tr>
-                <td><label for="#fnmae">First Name : </label></td>
-                <td>
-                  <input id="fname" name="firstname" type="text" />
-                </td>
-              </tr>
+         <div class="container">
+           <a href="index.html" class="navbar-brand text-warning">&#9855
+             HOSPITAL MANAGEMENT</a>
 
-              <tr>
-                <td>
-                  <label for="#lname">Last Name : </label>
-                </td>
-                <td>
-                  <input id="lname" name="lastname" type="text" />
-                </td>
-              </tr>
+            <button class="navbar-toggler " type="button" data-toggle="collapse"
+            data-target="#collapsenavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
 
-              <tr>
-                <td>
-                  <label for="#Email">Email:</label>
-                </td>
-                <td>
-                  <input id="Email" name="email" type="text" />
-                </td>
-              </tr>
+            <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+              <ul class="navbar-nav ml-auto ">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link pr-5">HOME</a>
+                </li>                  
+                <li class="nav-item">
+                  <a href="about.html" class="nav-link pr-5">ABOUT</a>
+                </li>                 
+                 <li class="nav-item">
+                  <a href="signup.html" class="nav-link pr-5">PATIENT SIGNUP</a>
+                </li>                 
+                 <li class="nav-item ">
+                  <a href="login.html" class="nav-link pr-5">LOGIN</a>
+                </li>
+              </ul>
+            </div>
+         </div>
+      </nav>
 
-              <tr>
-                <td>
-                  <label for="#Password">Password: </label>
-                </td>
-                <td>
-                  <input id="Password" name="password" type="text" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label for="#Conpassword">Confirm password : </label>
-                </td>
-                <td>
-                  <input id="Conpassword" name="conpassword" type="text" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <!-- empty-space -->
-                </td>
-                <td>
-                  <input
-                    style="background: green"
-                    type="button"
-                    value="Login"
-                  />
-                </td>
-              </tr>
-            </table>
-          </form>
+      <!-- header div starts -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-12 extra-div ">
+            <a href="patient-login.html">  <i class="fa fa-users fa-4x" aria-hidden="true"></i>  </a>
+            <h2>PATIENT</h2>
+            <p>Register and Book Appointment!!!
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12 extra-div">
+            <a href="doctor-login.html"><i class="fa fa-user-md fa-4x" aria-hidden="true"></i></a>
+            <h2>DOCTOR</h2>
+            <p>Write online Prescription and 
+              see your appointments!
+           </p>
+          </div>          
+          <div class="col-lg-4 col-md-4 col-12 extra-div">
+            <a href="admin-login.html"> <i class="fa fa-server fa-4x" aria-hidden="true"></i> </a>
+            <h2>ADMIN</h2>
+            <p>Maintain Docter's and Patient's!!
+            </p>
+          </div>
         </div>
-      </section>
-    </main>
-  </body>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
 </html>

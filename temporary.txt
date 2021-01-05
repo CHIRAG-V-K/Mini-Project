@@ -1,0 +1,3 @@
+<!-- <?php $sql=mysqli_query("select * from patients where email='".$_SESSION['login']."'"); 
+     $data=mysqli_fetch_array($sql)
+          ?> -->

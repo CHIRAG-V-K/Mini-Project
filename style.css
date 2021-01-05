@@ -4,23 +4,21 @@
   box-sizing: border-box;
 }
 
-main {
-  font-family: "Heebo", sans-serif;
-}
 
 .landing {
   min-height: 100vh;
-  background: url(https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&h=650&w=940)
+  background: url(https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
+    center;
+  background-size: cover;
+  text-align: center;
+}
+
+.login {
+  min-height: 100vh;
+  background: url(https://images.pexels.com/photos/5149754/pexels-photo-5149754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)
     center;
   background-size: cover;
   padding: 0rem 5rem;
-}
-
-.form-field {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 nav {
@@ -30,31 +28,22 @@ nav {
   min-height: 10vh;
 }
 
-.nav-links {
-  display: flex;
-  list-style-type: none;
-}
-
-a {
-  padding-left: 1.5rem;
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
-}
 
 #logo {
   font-family: "Lobster", cursive;
-  font-size: 2em;
+  font-size: 2.5em;
 }
 
-.big-text {
+
+.headerset {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   font-family: "Lobster", cursive;
   font-size: 5rem;
-  color: rgb(61, 61, 61);
-  transform: translate(-50%, -40%);
+  color: rgb(32, 0, 238);
+  transform: translate( -50%, -50%);
+  
 }
 
 .intro {
@@ -82,7 +71,9 @@ a {
 .intro-text {
   color: rgb(206, 140, 140);
   font-family: "Heebo", sans-serif;
-  font-size: 3rem;
+}
+.text {
+  font-size: 6rem !important;
 }
 
 .hide {
@@ -94,3 +85,79 @@ a {
   display: inline-block;
   transform: translateY(100%);
 }
+
+.header-login{
+  text-align: center;
+}
+.extra-div{
+  margin: 150px auto;
+  padding:  40px 10px !important;
+  
+}
+
+.extra-div h2{
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 20px 0 15px 0;
+  line-height: 1px;
+}
+.extra-div:hover{
+  background: rgba(152, 151, 242,0.4) ;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+  transform: translateY(-20px);
+  transition: 0.5s;
+
+}
+
+/* sidenav css */
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* sidenav css ends */
