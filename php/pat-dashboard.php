@@ -1,11 +1,16 @@
 <?php
+
 session_start();
+
+
 include_once('./include/nav.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
 		<title>Patient  | Dashboard</title>
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -112,7 +117,11 @@ include_once('./include/nav.php'); ?>
 				</div>
 			</div>
 			<!-- start: FOOTER -->
+
 	<?php include('./include/footer.php');?>
+
+	
+
 			<!-- end: FOOTER -->
 		
 			<!-- start: SETTINGS -->
