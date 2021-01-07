@@ -1,5 +1,7 @@
 
 <?php session_start();
+	include('include/checklogin.php');
+	check_login();
 	include_once('connection.php');
 	$sql=mysqli_query($conn,"select * from patient where email='".$_SESSION['email']."'"); 
 	$row = mysqli_fetch_assoc($sql); 

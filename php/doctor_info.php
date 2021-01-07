@@ -57,7 +57,7 @@ else {
       $_SESSION['demail']= $row['email'];
       $_SESSION['dfname']= $row['firstname'];
       $_SESSION['did']= $row['d_id'];
-    //   include("doc-dashboard.php");
+      include('doc_dashboard.php');
       }
       else{
       echo"YOU ARE NOT IN THIS HOSPITAL";

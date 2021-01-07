@@ -36,7 +36,6 @@ include_once('./include/nav.php');
 		
 <!-- include side bar here if needed -->
 
-<!-- <?php include('./include/sidebar.php'); ?> -->
 
 			<div class="app-content">
 				<!-- end: TOP NAVBAR -->
@@ -123,7 +122,6 @@ include_once('./include/nav.php');
 			<!-- end: FOOTER -->
 		
 			<!-- start: SETTINGS -->
-	<!-- <?php include('include/setting.php');?> -->
 
 			<!-- end: SETTINGS -->
 		</div>
