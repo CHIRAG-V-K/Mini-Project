@@ -55,10 +55,9 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="./edit-profile.php">Edit Profile</a>
+  <a href="./book-appointment.php">Book My Appointment</a>
+  <a href="./appointment-history.php">Appointment History</a>
 </div>
 
 <span id='dash' style="font-size:30px; 

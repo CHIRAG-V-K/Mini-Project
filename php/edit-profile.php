@@ -1,7 +1,15 @@
+
+<?php session_start();
+	include_once('connection.php');
+	$sql=mysqli_query($conn,"select * from patient where email='".$_SESSION['email']."'"); 
+	$row = mysqli_fetch_assoc($sql); 
+	?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Patient | Edit Profile</title>
+		<title><?php echo $_SESSION['fname'];?>| Edit Profile</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,7 +20,7 @@
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="vendor/themify-icons/themify-icons.min.css">
-		<link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
+		<link href="vendor/animate.css/animate.min .css" rel="stylesheet" media="screen">
 		<link href="vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" media="screen">
@@ -40,11 +48,11 @@
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">PATIENT | Edit Profile</h1>
+									<h1 class="mainTitle"><?php echo $_SESSION['fname']; ?> | Edit Profile</h1>
 																	</div>
 								<ol class="breadcrumb">
 									<li>
-										<span>Your</span>
+										<span><?php echo $_SESSION['fname']; ?></span>
 									</li>
 									<li class="active">
 										<span>Edit Profile</span>
@@ -59,17 +67,14 @@
 								<div class="col-md-12">
 									
 									<div class="row margin-top-30">
-										<div class="col-lg-8 col-md-12">
+										<div class="col-lg-12 col-md-12">
 											<div class="panel panel-white">
 												<div class="panel-heading">
 													<h5 class="panel-title">Edit Profile</h5>
 												</div>
 			<div class="panel-body text-left">
 			<?php
-			include_once('connection.php');
-			
-			$sql=mysqli_query($conn,"select * from patient where email='".$_SESSION['email']."'"); 
-			$row = mysqli_fetch_assoc($sql); 
+
 			?>
 
 		<form  name="edit" method="post">
@@ -78,28 +83,28 @@
 					<label for="fname">
 				   First Name
 					</label>
-	            <input type="text" name="fname" class="form-control" value="">
+	            <input type="text" name="fname" class="form-control" value="<?php echo $row['firstname'];?>">
 			</div>
 
 			<div class="form-group">
 					<label for="lname">
 				  Last Name
 					</label>
-	            <input type="text" name="lname" class="form-control" value="">
+	            <input type="text" name="lname" class="form-control" value="<?php echo $row['lastname'];?>">
 			</div>
 
 			<div class="form-group">
 					<label for="phone">
 				   Phone NO
 					</label>
-	            <input type="number" name="phone" class="form-control" value="">
+	            <input type="number" name="phone" class="form-control" value="<?php echo $row['phone'];?>">
 			</div>
 
 			<div class="form-group">
 					<label for="dob">
 				  D.O.B
 					</label>
-	            <input type="date" name="dob" class="form-control" value="">
+	            <input type="date" name="dob" class="form-control" value="<?php echo $row['dob'];?>">
 			</div>
 
 
@@ -107,57 +112,32 @@
 						<label for="location">
 										Location
 								</label>
-					<textarea name="location" class="form-control"></textarea>
+					<textarea name="location" class="form-control"
+					><?php echo $row['location'];?></textarea>
 			</div>
 			
 	
-			<div class="form-group">
-                <label>Gender:</label>
-              </br> 
-                <input
-                  name="gender"
-                  type="radio"
-                  value="male"
-                  />MALE 
-                  <input
-                  name="gender"
-                  type="radio"
-                  value="female"
-                  />FEMALE 
-                  <input
-                  name="gender"
-                  type="radio"
-                  value="other"
-                  />OTHER
-              </div>
-			<div class="form-group">
-									<label for="email">
+		
+			<div>
+                
+					<label for="email">
 							Email ID:
 								</label>
-					<input type="email" name="email" class="form-control"  readonly="readonly"  value="">
-				</div>
+					<input type="email" name="email" class="form-control"  readonly="readonly"  value="<?php echo $row['email'];?>">
+			</div>
 
 				<button type="submit" name="submit" class="btn btn-o btn-primary">
 										Update
 				</button>
 			</form>
-								</div>
-							</div>
 					</div>
-											
-						</div>
-							</div>						
-						</div>
+				</div>
+        	</div>		
+		</div>
+	</div>						
+</div>
 					
-						<!-- end: BASIC EXAMPLE -->
-			
-					
-					
-						
-						
-					
-						<!-- end: SELECT BOXES -->
-					
+
 			<!-- start: FOOTER -->
 	<?php include('include/footer.php');?>
 			<!-- end: FOOTER -->
@@ -199,3 +179,22 @@
 		<!-- end: CLIP-TWO JAVASCRIPTS -->
 	</body>
 </html>
+
+<?php
+if(isset($_POST['submit']))
+{
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$phone=$_POST['phone'];
+$dob=$_POST['dob'];
+$location=$_POST['location'];
+
+$sql=mysqli_query($conn,"Update patient set firstname='$fname',lastname='$lname',phone='$phone',location='$location',dob='$dob' where email='".$_SESSION['email']."'");
+if($sql)
+{
+echo "<script>alert('Your Profile updated Successfully');</script>";
+
+
+}
+}
+?>

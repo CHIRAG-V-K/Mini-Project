@@ -13,7 +13,7 @@ mysqli_select_db($conn,'hospital_management');
 
 // Email and password to auth.
 $email = $_POST['email'];
-$p_password = $_POST['password'];
+$d_password = $_POST['password'];
 
 // $sql = "SELECT * FROM patient WHERE email=";
 // $result = mysqli_query($conn,$sql);
@@ -34,7 +34,7 @@ $p_password = $_POST['password'];
 
 
 
-$sql = "SELECT p_id, firstname, email, p_password FROM patient WHERE email='$email'";
+$sql = "SELECT d_id, firstname, email, d_password FROM doctor WHERE email='$email'";
 
 // Init connection for stmt
 $stmt = mysqli_stmt_init($conn);
@@ -52,20 +52,20 @@ else {
    if($row = mysqli_fetch_assoc($result)) {
      
       // Password check and email check
-      if($p_password== $row['p_password'] && $email== $row['email']){
+      if($d_password== $row['d_password'] && $email== $row['email']){
       session_start();
-      $_SESSION['email']= $row['email'];
-      $_SESSION['fname']= $row['firstname'];
-      $_SESSION['pid']= $row['p_id'];
-      include("pat-dashboard.php");
+      $_SESSION['demail']= $row['email'];
+      $_SESSION['dfname']= $row['firstname'];
+      $_SESSION['did']= $row['d_id'];
+    //   include("doc-dashboard.php");
       }
       else{
-      header("Location:../signup.html");
+      echo"YOU ARE NOT IN THIS HOSPITAL";
       }
      
    }
-   // mysqli_stmt_close($stmt);
-   mysqli_close($conn);
-
+#connection closing are
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
 }
 ?>

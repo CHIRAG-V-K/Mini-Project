@@ -1,15 +1,13 @@
 <?php
-
-session_start();
-
-
-include_once('./include/nav.php'); ?>
+// session_start();
+include_once('./include/nav.php');
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 
-		<title>Patient  | Dashboard</title>
+		<title><?php echo $_SESSION['fname']; ?> | Dashboard</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -38,7 +36,7 @@ include_once('./include/nav.php'); ?>
 		
 <!-- include side bar here if needed -->
 
-<?php include('./include/sidebar.php');?>
+<!-- <?php include('./include/sidebar.php'); ?> -->
 
 			<div class="app-content">
 				<!-- end: TOP NAVBAR -->
@@ -48,11 +46,11 @@ include_once('./include/nav.php'); ?>
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">YOUR | Dashboard</h1>
+									<h1 class="mainTitle"><?php echo $_SESSION['fname'];?>| Dashboard</h1>
 								</div>
 								<ol class="breadcrumb">
 									<li>
-										<span>YOUR</span>
+										<span><?php echo $_SESSION['fname'];?></span>
 									</li>
 									<li class="active">
 										<span>Dashboard</span>
