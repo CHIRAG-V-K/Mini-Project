@@ -45,7 +45,7 @@ include_once('./include/nav.php');
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle"><?php echo $_SESSION['fname'];?>| Dashboard</h1>
+									<h1 class="mainTitle">Patient | <?php echo $_SESSION['fname'];?></h1>
 								</div>
 								<ol class="breadcrumb">
 									<li>

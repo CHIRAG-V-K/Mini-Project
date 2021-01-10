@@ -11,12 +11,17 @@ $gender = $_POST['gender'];
 $a_location= $_POST['location'];
 $dob = $_POST['dob'];
 
+if(mysqli_query($conn,"select email from patient where email='$email'")){
+  echo "<script>alert('This Email Alredy Exists');</script>";
+  echo "<script type='text/javascript'> window.location = '../signup.html'; </script>";
+}
 
-$sql ="INSERT INTO patient (firstname, lastname, Email,password, phone, gender, location, dob) VALUES('$firstname','$lastname','$email','$a_password','$phone','$gender','$a_location','$dob')";
+else{
+$sql ="INSERT INTO patient(firstname, lastname, email, p_password, phone, gender, location, dob) VALUES('$firstname','$lastname','$email','$a_password','$phone','$gender','$a_location','$dob')";
 
-mysqli_query($conn,$sql);
+$res = mysqli_query($conn,$sql);
 
-
+if($res){
 // result designs
 echo '<nav class="navbar navbar-expand-md  navbar-dark bg-dark"> 
 
@@ -73,6 +78,12 @@ echo"<a href='../login.html'>
       </a>";
 
       mysqli_close($conn);
+}
+
+else{
+  echo "ERROR";
+}
 
 
+}
 ?>

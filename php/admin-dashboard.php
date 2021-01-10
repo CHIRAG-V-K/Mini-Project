@@ -1,11 +1,14 @@
 <?php
-include('include/doc-checklogin.php');
+include('connection.php');
+include('include/admin-checklogin.php');
 check_login();
-?>
+?> 
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo $_SESSION['dfname'];  ?> | Dashboard</title>
+		<title><?php echo $_SESSION['afname']; ?> | Dashboard</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,12 +33,9 @@ check_login();
 
 	</head>
 	<body>
-		<div id="app">	
-        <?php include('include/nav.php');?>	
-<?php include('doc-sidebar.php');?>
+		<div id="app">		
+<?php include('include/nav.php');?>
 			<div class="app-content">
-				
-						
 
         <!-- end: TOP NAVBAR -->
         <div class="main-content" >
@@ -44,11 +44,11 @@ check_login();
         <section id="page-title">
         <div class="row">
         <div class="col-sm-8">
-            <h1 class="mainTitle">Doctor |  <?php echo $_SESSION['dfname'];  ?></h1>
+            <h1 class="mainTitle">Admin | <?php echo $_SESSION['afname']; ?></h1>
                                             </div>
         <ol class="breadcrumb">
             <li>
-                <span><?php echo $_SESSION['dfname'];  ?> </span>
+                <span><?php echo $_SESSION['afname']; ?></span>
             </li>
             <li class="active">
                 <span>Dashboard</span>
@@ -64,11 +64,15 @@ check_login();
             <div class="panel panel-white no-radius text-center">
                 <div class="panel-body">
                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Profile</h2>
+                    <h2 class="StepTitle">Manage Patients</h2>
                     
                     <p class="links cl-effect-1">
-                        <a href="doc-edit-profile.php">
-                            Update Profile
+                        <a href="manage-patients.php">
+                        <?php $result = mysqli_query($conn,"SELECT DISTINCT * FROM patient ");
+        $num_rows = mysqli_num_rows($result);
+        {
+        ?>
+                    Total Patients :<?php echo($num_rows);  } ?>		
                         </a>
                     </p>
                 </div>
@@ -77,28 +81,58 @@ check_login();
         <div class="col-sm-4">
             <div class="panel panel-white no-radius text-center">
                 <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Appointments</h2>
+                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-users fa-stack-1x fa-inverse"></i> </span>
+                    <h2 class="StepTitle">Manage Doctors</h2>
                 
                     <p class="cl-effect-1">
-                        <a href="doc-appointments.php">
-                            View Appointment History
+                        <a href="manage-doctors.php">
+                        <?php $result1 = mysqli_query($conn,"SELECT DISTINCT * FROM doctor ");
+        $num_rows1 = mysqli_num_rows($result1);
+        {
+        ?>
+                    Total Doctors :<?php echo($num_rows1);  } ?>		
+                        </a>
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-white no-radius text-center">
+                <div class="panel-body">
+                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                    <h2 class="StepTitle"> Appointments</h2>
+                    
+                    <p class="links cl-effect-1">
+                            <a href="a-appointment-history.php">
+                        <?php $sql= mysqli_query($conn,"SELECT DISTINCT * FROM appointment");
+        $num_rows2 = mysqli_num_rows($sql);
+        {
+        ?>
+                    Total Appointments :<?php echo ($num_rows2);  } ?>	
                         </a>
                     </p>
                 </div>
             </div>
         </div>
+        </div>
+        </div>
 
-        </div>
-        </div>
+
+
+
+
+
         <!-- end: SELECT BOXES -->
 
-        </div>
-        </div>
-        </div>
-        <!-- start: FOOTER -->
+					</div>
+				</div>
+			</div>
+			<!-- start: FOOTER -->
 	<?php include('include/footer.php');?>
-	<!-- end: SETTINGS -->
+			<!-- end: FOOTER -->
+		
+
 		</div>
 		<!-- start: MAIN JAVASCRIPTS -->
 		<script src="vendor/jquery/jquery.min.js"></script>

@@ -1,11 +1,15 @@
 <?php
-include('include/doc-checklogin.php');
+session_start();
+include('connection.php');
+include('include/admin-checklogin.php');
 check_login();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo $_SESSION['dfname'];  ?> | Dashboard</title>
+		<title><?php echo $_SESSION['afname'] ?> | Manage Doctors</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,16 +30,13 @@ check_login();
 		<link rel="stylesheet" href="assets/css/styles.css">
 		<link rel="stylesheet" href="assets/css/plugins.css">
 		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
-
-
 	</head>
 	<body>
-		<div id="app">	
-        <?php include('include/nav.php');?>	
-<?php include('doc-sidebar.php');?>
+		<div id="app">		
+            <?php include('include/nav.php');?>
+<?php include('include/admin-sidebar.php');?>
 			<div class="app-content">
-				
-						
+
 
         <!-- end: TOP NAVBAR -->
         <div class="main-content" >
@@ -44,62 +45,88 @@ check_login();
         <section id="page-title">
         <div class="row">
         <div class="col-sm-8">
-            <h1 class="mainTitle">Doctor |  <?php echo $_SESSION['dfname'];  ?></h1>
-                                            </div>
+        <h1 class="mainTitle"><?php echo $_SESSION['afname'] ?>| Manage Doctors</h1>
+                            </div>
         <ol class="breadcrumb">
-            <li>
-                <span><?php echo $_SESSION['dfname'];  ?> </span>
-            </li>
-            <li class="active">
-                <span>Dashboard</span>
-            </li>
+        <li>
+        <span>Admin</span>
+        </li>
+        <li class="active">
+        <span>Manage Doctors</span>
+        </li>
         </ol>
         </div>
         </section>
         <!-- end: PAGE TITLE -->
         <!-- start: BASIC EXAMPLE -->
         <div class="container-fluid container-fullw bg-white">
-        <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-white no-radius text-center">
-                <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Profile</h2>
-                    
-                    <p class="links cl-effect-1">
-                        <a href="doc-edit-profile.php">
-                            Update Profile
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-white no-radius text-center">
-                <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Appointments</h2>
-                
-                    <p class="cl-effect-1">
-                        <a href="doc-appointments.php">
-                            View Appointment History
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
 
+
+        <div class="row">
+        <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15">Manage <span class="text-bold">Docters</span></h5>
+        <p style="color:red;"><?php echo htmlentities($_SESSION['msg']);?>
+        <?php echo htmlentities($_SESSION['msg']="");?></p>	
+        <table class="table table-hover" id="sample-table-1">
+        <thead>
+        <tr>
+        <th class="center">#</th>
+        <th>Specialization</th>
+        <th>Doctor Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Creation Date </th>
+        <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $sql=mysqli_query($conn,"select * from doctor");
+        $cnt=1;
+    while($row=mysqli_fetch_assoc($sql))
+        {
+        ?>
+
+        <tr>
+        <td class="center"><?php echo $cnt;?>.</td>
+        <td><?php echo $row['d_role'];?></td>
+        <td><?php echo $row['firstname'];?></td>
+        <td><?php echo $row['email'];?></td>
+        <td><?php echo $row['phone'];?></td>
+        <td><?php echo $row['address'];?></td>
+        <td><?php echo $row['date'];?></td>
+
+        <td >
+        <a href="manage-doctors.php?id=<?php echo $row['d_id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+        </div>
+        </td>
+        </tr>
+
+        <?php 
+        $cnt=$cnt+1;
+    }?>
+
+
+        </tbody>
+        </table>
         </div>
         </div>
+        </div>
+        </div>
+        </div>
+        <!-- end: BASIC EXAMPLE -->
         <!-- end: SELECT BOXES -->
 
         </div>
         </div>
         </div>
         <!-- start: FOOTER -->
-	<?php include('include/footer.php');?>
-	<!-- end: SETTINGS -->
-		</div>
+        <?php include('include/footer.php');?>
+        <!-- end: FOOTER -->
+
+
 		<!-- start: MAIN JAVASCRIPTS -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -132,3 +159,12 @@ check_login();
 		<!-- end: CLIP-TWO JAVASCRIPTS -->
 	</body>
 </html>
+
+
+<?php
+if(isset($_GET['del']))
+{
+        mysqli_query($conn,"delete from doctor where d_id = '".$_GET['id']."'");
+        $_SESSION['msg']="data deleted !!";
+}
+?>

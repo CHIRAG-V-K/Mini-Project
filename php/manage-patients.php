@@ -1,15 +1,19 @@
 <?php
 session_start();
-//error_reporting(0);
 include('connection.php');
-include('include/doc-checklogin.php');
+include('include/admin-checklogin.php');
 check_login();
-?>
 
+if(isset($_GET['del']))
+		  {
+		          mysqli_query($conn,"delete from patient where p_id = '".$_GET['id']."'");
+                  $_SESSION['msg']="data deleted !!";
+		  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo $_SESSION['dfname'];  ?> | Appointment History</title>
+		<title><?php echo $_SESSION['afname']; ?> | Manage Patients</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,10 +37,10 @@ check_login();
 	</head>
 	<body>
 		<div id="app">		
-    <?php include('include/nav.php');?>
-<?php include('doc-sidebar.php');?>
+            <?php include('include/nav.php');?>
+<?php include('include/admin-sidebar.php');?>
 			<div class="app-content">
-
+				
 
     <!-- end: TOP NAVBAR -->
     <div class="main-content" >
@@ -45,14 +49,14 @@ check_login();
     <section id="page-title">
     <div class="row">
     <div class="col-sm-8">
-    <h1 class="mainTitle">Doctor <?php echo $_SESSION['dfname'];  ?> | Appointment History</h1>
-                        </div>
+    <h1 class="mainTitle"><?php echo $_SESSION['afname']; ?> | Manage Patients</h1>
+                                    </div>
     <ol class="breadcrumb">
     <li>
-    <span><?php echo $_SESSION['dfname'];  ?> </span>
+        <span>Admin</span>
     </li>
     <li class="active">
-    <span>Appointment History</span>
+        <span>Manage Patients</span>
     </li>
     </ol>
     </div>
@@ -64,105 +68,99 @@ check_login();
 
     <div class="row">
     <div class="col-md-12">
-  
+    <h5 class="over-title margin-bottom-15">Manage <span class="text-bold">Patients</span></h5>
+    <p style="color:red;"><?php echo htmlentities($_SESSION['msg']);?>
+    <?php echo htmlentities($_SESSION['msg']="");?>
+</p>	
     <table class="table table-hover" id="sample-table-1">
-    <thead>
-    <tr>
-    <th class="center">#</th>
-    <th class="hidden-xs">Patient  Name</th>
-    <th>Specialization</th>
-    <th>Consultancy Fee</th>
-    <th>Appointment Date / Time </th>
-    <th>Message</th>
-    <th>Appointment Creation Date  </th>
-    <th>Current Status</th>
-    <th>Action</th>
-
-    </tr>
-    </thead>
-    <tbody>
+        <thead>
+            <tr>
+                <th class="center">#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th >Address</th>
+                <th>Gender </th>
+                <th>Email </th>
+                <th>Phone </th>
+                <th>Creation Date </th>
+                <th>Action </th>
+                
+            </tr>
+        </thead>
+        <tbody>
     <?php
-    $sql=mysqli_query($conn,"select patient.firstname as fname,appointment.*  from appointment join patient on patient.p_id=appointment.p_id where appointment.d_id='".$_SESSION['did']."'");
+    $sql=mysqli_query($conn,"select * from patient");
     $cnt=1;
-    while($row=mysqli_fetch_assoc($sql))
+    while($row=mysqli_fetch_array($sql))
     {
     ?>
 
-    <tr>
-    <td class="center"><?php echo $cnt;?>.</td>
-    <td class="hidden-xs"><?php echo $row['fname'];?></td>
-    <td><?php echo $row['d_role'];?></td>
-    <td><?php echo $row['d_fee'];?></td>
-    <td><?php echo $row['ap_date'];?> / <?php echo
-        $row['ap_time'];?>
-    </td>
-    
-    <td><?php echo $row['message'];?></td>
-    <td><?php echo $row['date'];?></td>
-    <td>
-    <?php if(($row['patientstatus']==1) && ($row['doctorstatus']==1))  
-    {
-    echo "Active";
-    }
-    if(($row['patientstatus']==0) && ($row['doctorstatus']==1))  
-    {
-    echo "Cancle by Patient";
-    }
+            <tr>
+                <td class="center"><?php echo $cnt;?>.</td>
+                <td><?php echo $row['firstname'];?></td>
+                <td><?php echo $row['lastname'];?></td>
+                <td><?php echo $row['location'];?></td>
+                <td><?php echo $row['gender'];?></td>
+                <td><?php echo $row['email'];?></td>
+                <td><?php echo $row['phone'];?></td>
+                <td><?php echo $row['date'];?></td>
+                
+               
+                <td >
+                <div class="visible-md visible-lg visible-sm hidden-xs">
 
-    if(($row['patientstatus']==1) && ($row['doctorstatus']==0))  
-    {
-    echo "Cancel by you";
-    }
-  
-    if(($row['patientstatus']==0) && ($row['doctorstatus']==0))  
-    {
-    echo "Cancel by Management";
-    }
-
-
-
-    ?></td>
-    <td >
-    <div class="visible-md visible-lg hidden-sm hidden-xs">
-    <?php if(($row['patientstatus']==1) && ($row['doctorstatus']==1))  
-    { ?>
-
-        
-    <a href="doc-appointments.php?id=<?php echo $row['p_id']?>&cancel=update&time=<?php echo $row['ap_time']?>" onClick="return confirm('Are you sure you want to cancel this appointment ?')"class="btn btn-transparent btn-xs tooltips" title="Cancel Appointment" tooltip-placement="top" tooltip="Remove">Cancle</a>
-    <?php } else {
-
-    echo "Cancled";
-    } ?>
-    </div>
-    <div class="visible-xs visible-sm hidden-md hidden-lg">
-        <div class="btn-group" dropdown is-open="status.isopen">
-            <button type="button" class="btn btn-primary btn-o btn-sm dropdown-toggle" dropdown-toggle>
-                <i class="fa fa-cog"></i>&nbsp;<span class="caret">
-                </span>
-            </button>
-        </div>
-    </div></td>
-    </tr>
-
-    <?php 
+                    <a href="manage-patients.php?id=<?php echo $row['p_id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                    
+                </div>
+                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary btn-o btn-sm dropdown-toggle">
+                            <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                            <li>
+                                <a href="#">
+                                    Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Share
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Remove
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div></td>
+            </tr>
+            
+            <?php 
     $cnt=$cnt+1;
-    }?>
-
-
-    </tbody>
+                }?>
+            
+            
+        </tbody>
     </table>
     </div>
     </div>
     </div>
-
+    </div>
+    </div>
     <!-- end: BASIC EXAMPLE -->
     <!-- end: SELECT BOXES -->
 
     </div>
     </div>
     </div>
-			<!-- start: FOOTER -->
-	<?php include('include/footer.php');?>			
+<!-- start: FOOTER -->
+	<?php include('include/footer.php');?>
+			<!-- end: FOOTER -->
+
+			
 			<!-- end: SETTINGS -->
 		</div>
 		<!-- start: MAIN JAVASCRIPTS -->
@@ -197,15 +195,4 @@ check_login();
 		<!-- end: CLIP-TWO JAVASCRIPTS -->
 	</body>
 </html>
-
-
-<?php
-if(isset($_GET['cancel']))
-{
-mysqli_query($conn,"update appointment set doctorstatus='0' where p_id ='".$_GET['id']."'
-and ap_time ='".$_GET['time']."'");
-echo "<script>alert('appointment canceled Successfully');</script>";
-echo "<script type='text/javascript'> window.location = 'doc-appointments.php'; </script>";
-}
-
-?>
+ 

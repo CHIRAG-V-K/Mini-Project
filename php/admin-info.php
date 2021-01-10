@@ -8,16 +8,15 @@ $conn = mysqli_connect($servername,$username,$password);
 if(!$conn){
    echo "Connection Failed".mysqli_connect_error();
 }
-
 mysqli_select_db($conn,'hospital_management');
 
-// Email and password to auth.
 $email = $_POST['email'];
-$d_password = $_POST['password'];
+$a_password = $_POST['password'];
 
 
 
-$sql = "SELECT d_id, firstname, email, d_password FROM doctor WHERE email='$email'";
+
+$sql = "select ad_id, firstname, email, ad_password from admin WHERE email='$email'";
 
 // Init connection for stmt
 $stmt = mysqli_stmt_init($conn);
@@ -33,23 +32,23 @@ else {
    $result = mysqli_stmt_get_result($stmt);
 
    if($row = mysqli_fetch_assoc($result)) {
-     
       // Password check and email check
-      if($d_password== $row['d_password'] && $email== $row['email']){
+      if($a_password == $row['ad_password'] && $email == $row['email']){
       session_start();
-      $_SESSION['demail']= $row['email'];
-      $_SESSION['dfname']= $row['firstname'];
-      $_SESSION['did']= $row['d_id'];
-      include('doc_dashboard.php');
+      $_SESSION['aemail']= $row['email'];
+      $_SESSION['afname']= $row['firstname'];
+      $_SESSION['aid']= $row['ad_id'];
+      
+      include("admin-dashboard.php");
       }
       else{
-      echo"YOU ARE NOT IN THIS HOSPITAL
-               OR CONTACT ADMIN";
+      echo "GO AWAY YOU ARE NOT MY ADMIN";
+      
       }
      
    }
-#connection closing are
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
+   mysqli_stmt_close($stmt);
+   mysqli_close($conn);
+
 }
 ?>
