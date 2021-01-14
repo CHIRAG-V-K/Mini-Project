@@ -54,10 +54,10 @@
 																	</div>
 								<ol class="breadcrumb">
 									<li>
-										<span><?php echo $_SESSION['fname']; ?></span>
+										<span><?php echo $_SESSION['fname']; ?>'s ID</span>
 									</li>
 									<li class="active">
-										<span>Edit Profile</span>
+										<span><?php echo $_SESSION['pid']; ?></span>
 									</li>
 								</ol>
 							</div>

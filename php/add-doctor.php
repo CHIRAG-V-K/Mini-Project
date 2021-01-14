@@ -78,7 +78,7 @@ check_login();
 										<label for="DoctorSpecialization">
 											Doctor Specialization
 										</label>
-											<input type="text" name="Doctorspecialization"
+											<input type="text" required name="Doctorspecialization"
 											class="form-control"
 											placeholder="Doctorspecialization">
 										</div>
@@ -87,7 +87,7 @@ check_login();
 								<label for="doctorname">
 										First Name
 								</label>
-<input type="text" name="docname" class="form-control"  placeholder="Enter Doctor Name">
+<input type="text" name="docname" class="form-control" required  placeholder="Enter Doctor Name">
 							</div>
 						
 
@@ -95,7 +95,7 @@ check_login();
 								<label for="doctorname">
 										Last Name
 								</label>
-<input type="text" name="lname" class="form-control"  placeholder="Enter Doctor Name">
+<input type="text" name="lname" class="form-control" required placeholder="Enter Doctor Name">
 							</div>
 
 
@@ -103,27 +103,27 @@ check_login();
 										<label for="address">
 												Doctor Clinic Address
 										</label>
-		<textarea name="clinicaddress" class="form-control"  placeholder="Enter Doctor Clinic Address"></textarea>
+		<textarea name="clinicaddress" class="form-control" required placeholder="Enter Doctor Clinic Address"></textarea>
 									</div>
 		<div class="form-group">
 										<label for="fess">
 												Doctor Consultancy Fees
 										</label>
-		<input type="number" name="docfees" class="form-control"  placeholder="Enter Doctor Consultancy Fees">
+		<input type="number" name="docfees" class="form-control" required placeholder="Enter Doctor Consultancy Fees">
 									</div>
 
 		<div class="form-group">
 				<label for="fess">
 												Doctor Contact no
 										</label>
-		<input type="number" name="doccontact" class="form-control"  placeholder="Enter Doctor Contact no">
+		<input type="number" name="doccontact" class="form-control" required placeholder="Enter Doctor Contact no">
 									</div>
 
 		<div class="form-group">
 				<label for="fess">
 												Doctor Email
 										</label>
-		<input type="email" name="docemail" class="form-control"  placeholder="Enter Doctor Email id">
+		<input type="email" name="docemail" class="form-control"required  placeholder="Enter Doctor Email id">
 									</div>
 
 
@@ -149,19 +149,20 @@ check_login();
                 <label for="gender">Gender:</label>
               </br> 
                 <input
-                  name="gender"
+                  name="gender" 
                   type="radio"
                   value="male"
                   />MALE </br> 
                   <input
-                  name="gender"
+                  name="gender" 
                   type="radio"
                   value="female"
                   />FEMALE </br> 
                   <input
                   name="gender"
                   type="radio"
-                  value="other"
+				  value="other"
+				  default
                   />OTHER
               </div>
 
@@ -171,7 +172,7 @@ check_login();
 										<label for="doctorname">
 												DOB
 										</label>
-		<input type="date" name="dob" class="form-control" >
+		<input type="date" name="dob" required class="form-control" >
 									</div>
 
 		<button type="submit" name="submit" class="btn btn-o btn-primary">

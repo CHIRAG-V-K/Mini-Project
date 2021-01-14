@@ -1,11 +1,15 @@
 <?php
-include('include/doc-checklogin.php');
+session_start();
+include('connection.php');
+include('include/checklogin.php');
 check_login();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo $_SESSION['dfname'];  ?> | Dashboard</title>
+		<title><?php echo $_SESSION['fname'];  ?> | Prescriptions</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,90 +35,98 @@ check_login();
 	</head>
 	<body>
 		<div id="app">	
-        <?php include('include/nav.php');?>	
-<?php include('doc-sidebar.php');?>
-			<div class="app-content">
-				
-						
-
-        <!-- end: TOP NAVBAR -->
-        <div class="main-content" >
-        <div class="wrap-content container" id="container">
-        <!-- start: PAGE TITLE -->
-        <section id="page-title">
-        <div class="row">
-        <div class="col-sm-8">
-            <h1 class="mainTitle">Doctor |  <?php echo $_SESSION['dfname'];  ?></h1>
-                                            </div>
-        <ol class="breadcrumb">
+			
+<?php include('include/nav.php');?>
+<?php include('include/sidebar.php');?>
+          <div class="app-content">
+            <div class="main-content" >
+     		       <div class="wrap-content container" id="container">
+            <!-- start: PAGE TITLE -->
+            <section id="page-title">
+            <div class="row">
+            <div class="col-sm-8">
+            <h1 class="mainTitle"><?php echo $_SESSION['fname'];  ?> | Prescriptions</h1>
+                                </div>
+            <ol class="breadcrumb">
             <li>
-                <span><?php echo $_SESSION['dfname'];  ?> </span>
-            </li>
-            <li class="active">
-                <span>Dashboard</span>
-            </li>
-        </ol>
-        </div>
-        </section>
-        <!-- end: PAGE TITLE -->
-        <!-- start: BASIC EXAMPLE -->
-        <div class="container-fluid container-fullw bg-white">
-        <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-white no-radius text-center">
-                <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Profile</h2>
-                    
-                    <p class="links cl-effect-1">
-                        <a href="doc-edit-profile.php">
-                            Update Profile
-                        </a>
-                    </p>
-                </div>
+            <span><?php echo $_SESSION['fname']; ?>'s ID</span>
+        </li>
+        <li class="active">
+            <span><?php echo $_SESSION['pid']; ?></span>
+        </li>
+            </ol>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-white no-radius text-center">
-                <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">My Appointments</h2>
-                
-                    <p class="cl-effect-1">
-                        <a href="doc-appointments.php">
-                            View Appointment History
-                        </a>
-                    </p>
-                </div>
-            </div>
-		</div> 
-		
-		<div class="col-sm-4">
-            <div class="panel panel-white no-radius text-center">
-                <div class="panel-body">
-                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-tablet fa-stack-1x fa-inverse"></i> </span>
-                    <h2 class="StepTitle">Prescription</h2>
-                
-                    <p class="cl-effect-1">
-                        <a href="give-prescription.php">
-                            Give Prescription
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
+            </section>
+            <!-- end: PAGE TITLE -->
+            <!-- start: BASIC EXAMPLE -->
+            <div class="container-fluid container-fullw bg-white">
 
+
+        <div class="row">
+        <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15">
+        <span class="text-bold">Your Prescriptions</span></h5>
+        <!-- <p style="color:red;"><?php echo htmlentities($_SESSION['msg']);?>
+        <?php echo htmlentities($_SESSION['msg']="");?>
+        </p>	 -->
+        <table class="table table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    <th class="center">#</th>
+                    <th>Creation Date </th>
+                    <th>Doctor</th>
+                    <th>Medicine Name</th>
+                    <th>Count</th>
+                    <th>Dose </th>
+                    <th>Message </th>
+                    <th>Print </th>
+                </tr>
+            </thead>
+            <tbody>
+        <?php
+        $sql=mysqli_query($conn,"select doctor.firstname as dfname, doctor.lastname as dlname, prescription.* from prescription join doctor on prescription.d_id = doctor.d_id
+        where p_id='".$_SESSION['pid']."' order by prescription.date");
+        $cnt=1;
+        while($row=mysqli_fetch_assoc($sql))
+        {
+        ?>
+
+                <tr>
+                    <td class="center"><?php echo $cnt;?>.</td>
+                    <td><?php echo $row['date'];?></td>
+                    <td><?php echo $row['dfname'];?><br><?php echo $row['dlname'];?></td>
+                    <td><?php echo $row['med_name'];?></td>
+                    <td><?php echo $row['med_count'];?></td>
+                    <td><?php echo $row['med_dose'];?></td>
+                    <td><?php echo $row['message'];?></td>
+                    <td><a href="#">PRINT</a></td>
+                    </tr>
+                <?php 
+        $cnt=$cnt+1;
+                    }?>
+                
+                
+            </tbody>
+        </table>
         </div>
         </div>
+        </div>
+        </div>
+        </div>
+        <!-- end: BASIC EXAMPLE -->
         <!-- end: SELECT BOXES -->
 
         </div>
         </div>
         </div>
         <!-- start: FOOTER -->
-	<?php include('include/footer.php');?>
-	<!-- end: SETTINGS -->
-		</div>
+        <?php include('include/footer.php');?>
+                <!-- end: FOOTER -->
+
+                
+                <!-- end: SETTINGS -->
+            </div>
+
 		<!-- start: MAIN JAVASCRIPTS -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -147,3 +159,4 @@ check_login();
 		<!-- end: CLIP-TWO JAVASCRIPTS -->
 	</body>
 </html>
+

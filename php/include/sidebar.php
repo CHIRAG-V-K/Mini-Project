@@ -57,7 +57,8 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="./edit-profile.php">Edit Profile</a>
   <a href="./book-appointment.php">Book My Appointment</a>
-  <a href="./appointment-history.php">Appointment History</a>
+  <a href="./appointment-history.php">Appointment History</a> 
+  <a href="./patient-prescription.php">Prescriptions</a>
 </div>
 
 <span id='dash' style="font-size:30px; 

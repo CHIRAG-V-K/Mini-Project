@@ -71,7 +71,7 @@ check_login();
                 <h5 class="panel-title">Edit Doctor</h5>
             </div>
             <div class="panel-body">
-            <?php $sql=mysqli_query($conn,"select * from doctor where email='".$_SESSION['demail']."'");
+            <?php $sql=mysqli_query($conn,"select * from doctor where email='".$_SESSION['email']."'");
             while($data=mysqli_fetch_array($sql))
             {
             ?>

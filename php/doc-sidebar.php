@@ -55,8 +55,10 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
   <a href="./doc-edit-profile.php">My Profile</a>
   <a href="./doc-appointments.php"> My Appointment</a>
+  <a href="./give-prescription.php"> Give Prescription</a>
 </div>
 
 <span id='dash' style="font-size:30px; 

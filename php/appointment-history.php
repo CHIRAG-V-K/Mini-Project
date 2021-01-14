@@ -45,11 +45,11 @@ check_login();
 									<h1 class="mainTitle"><?php echo $_SESSION['fname']?> | Appointment History</h1>
 																	</div>
 								<ol class="breadcrumb">
-									<li>
-										<span><?php echo $_SESSION['fname']?></span>
+								<li>
+										<span><?php echo $_SESSION['fname']; ?>'s ID</span>
 									</li>
 									<li class="active">
-										<span>Appointment History</span>
+										<span><?php echo $_SESSION['pid']; ?></span>
 									</li>
 								</ol>
 							</div>

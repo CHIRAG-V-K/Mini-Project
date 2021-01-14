@@ -51,10 +51,10 @@ check_login();
 								</div>
 								<ol class="breadcrumb">
 									<li>
-										<span><?php echo $_SESSION['fname'];?></span>
+										<span><?php echo $_SESSION['fname'];?>'s ID</span>
 									</li>
 									<li class="active">
-										<span>Dashboard</span>
+										<span><?php echo $_SESSION['pid']; ?></span>
 									</li>
 								</ol>
 							</div>
@@ -93,6 +93,7 @@ check_login();
 										</div>
 									</div>
 								</div>
+
 								<div class="col-sm-4">
 									<div class="panel panel-white no-radius text-center">
 										<div class="panel-body">
@@ -107,8 +108,29 @@ check_login();
 										</div>
 									</div>
 								</div>
+							
+
+
+								<div class="col-sm-4">
+            <div class="panel panel-white no-radius text-center">
+                <div class="panel-body">
+                    <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-tablet fa-stack-1x fa-inverse"></i> </span>
+                    <h2 class="StepTitle">Prescription</h2>
+                
+                    <p class="cl-effect-1">
+                        <a href="patient-prescription.php">
+                            view Prescription
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
 							</div>
 						</div>
+
+						
 			
 						<!-- end: SELECT BOXES -->
 						
