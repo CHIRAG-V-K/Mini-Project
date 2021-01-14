@@ -22,7 +22,10 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="../style.css" />
 </head>
+
+
 <body>
+
      <div class="landing">
         <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
 
@@ -47,7 +50,7 @@
                     <a href="../signup.html" class="nav-link pr-5">PATIENT SIGNUP</a>
                   </li> -->               
                    <li class="nav-item ">
-                    <a href="../login.html" class="nav-link pr-5">LOGOUT</a>
+                    <a href="logout.php" class="nav-link pr-5">LOGOUT</a>
                   </li>
                 </ul>
               </div>

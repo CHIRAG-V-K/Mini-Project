@@ -65,7 +65,7 @@ check_login();
             <div class="col-md-12">
 
             <div class="row margin-top-30">
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-12 col-md-12">
             <div class="panel panel-white">
             <div class="panel-heading">
                 <h5 class="panel-title">Edit Doctor</h5>
@@ -158,11 +158,6 @@ check_login();
 
             <!-- end: BASIC EXAMPLE -->
 
-
-
-
-
-					
 						<!-- end: SELECT BOXES -->
 						
 					</div>

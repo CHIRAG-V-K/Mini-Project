@@ -1,6 +1,8 @@
 <?php
 // session_start();
 include_once('./include/nav.php');
+include('./include/checklogin.php');
+check_login();
  ?>
 
 <!DOCTYPE html>

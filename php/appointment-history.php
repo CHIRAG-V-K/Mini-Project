@@ -1,9 +1,9 @@
 <?php
 session_start();
 include('connection.php');
-include('include/admin-checklogin.php');
+include('include/checklogin.php');
 check_login();
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">

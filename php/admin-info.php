@@ -35,7 +35,7 @@ else {
       // Password check and email check
       if($a_password == $row['ad_password'] && $email == $row['email']){
       session_start();
-      $_SESSION['aemail']= $row['email'];
+      $_SESSION['email']= $row['email'];
       $_SESSION['afname']= $row['firstname'];
       $_SESSION['aid']= $row['ad_id'];
       

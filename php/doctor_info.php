@@ -37,7 +37,7 @@ else {
       // Password check and email check
       if($d_password== $row['d_password'] && $email== $row['email']){
       session_start();
-      $_SESSION['demail']= $row['email'];
+      $_SESSION['email']= $row['email'];
       $_SESSION['dfname']= $row['firstname'];
       $_SESSION['did']= $row['d_id'];
       include('doc_dashboard.php');

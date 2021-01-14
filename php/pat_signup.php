@@ -11,7 +11,9 @@ $gender = $_POST['gender'];
 $a_location= $_POST['location'];
 $dob = $_POST['dob'];
 
-if(mysqli_query($conn,"select email from patient where email='$email'")){
+$ret= mysqli_query($conn,"select email from patient where email='$email'");
+$res=mysqli_fetch_assoc($ret);
+if($res){
   echo "<script>alert('This Email Alredy Exists');</script>";
   echo "<script type='text/javascript'> window.location = '../signup.html'; </script>";
 }

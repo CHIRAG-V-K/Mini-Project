@@ -267,14 +267,16 @@ $password=$_POST['npass'];
 $gender=$_POST['gender'];
 $dob=$_POST['dob'];
 
+$ret= mysqli_query($conn,"select email from doctor where email='$docemail'");
+$res=mysqli_fetch_assoc($ret);
+if($res){
+  echo "<script>alert('This Email Alredy Exists');</script>";
+  echo "<script type='text/javascript'> window.location = 'add-doctor.php'; </script>";
+}
 
-if(mysqli_query($conn,"select email from doctor where email='$docemail'")){
-	echo "<script>alert('This Email Alredy Exists');</script>";
-	echo "<script type='text/javascript'> window.location = 'add-doctor.php'; </script>";
-  }
-
-  else{
+else{
 $sql=mysqli_query($conn,"insert into doctor(d_role,firstname,lastname,address,d_fee,phone,email,d_password,gender,dob) values('$docspecialization','$docname','$lname','$docaddress','$docfees','$doccontactno','$docemail','$password','$gender','$dob')");
+
 if($sql)
 {
 echo "<script>alert('Doctor info added Successfully');</script>";
