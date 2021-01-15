@@ -66,9 +66,6 @@ check_login();
         <div class="col-md-12">
         <h5 class="over-title margin-bottom-15">
         <span class="text-bold">Your Prescriptions</span></h5>
-        <!-- <p style="color:red;"><?php echo htmlentities($_SESSION['msg']);?>
-        <?php echo htmlentities($_SESSION['msg']="");?>
-        </p>	 -->
         <table class="table table-hover" id="sample-table-1">
             <thead>
                 <tr>

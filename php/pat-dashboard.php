@@ -119,7 +119,7 @@ check_login();
                 
                     <p class="cl-effect-1">
                         <a href="patient-prescription.php">
-                            view Prescription
+                            View Prescription
                         </a>
                     </p>
                 </div>
