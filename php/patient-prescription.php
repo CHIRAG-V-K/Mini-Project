@@ -96,7 +96,8 @@ check_login();
                     <td><?php echo $row['med_count'];?></td>
                     <td><?php echo $row['med_dose'];?></td>
                     <td><?php echo $row['message'];?></td>
-                    <td><a href="#">PRINT</a></td>
+                    <!-- <td><a class="btn btn-primary" target="_blank" href="print.php">PRINT</a></td> -->
+                    <td><button class="btn btn-primary" onclick="window.print();"> PRINT</button> </td>
                     </tr>
                 <?php 
         $cnt=$cnt+1;
@@ -105,8 +106,9 @@ check_login();
                 
             </tbody>
         </table>
-        </div>
-        </div>
+    </div>
+</div>
+<?php include('include/footer.php');?>
         </div>
         </div>
         </div>
@@ -117,7 +119,6 @@ check_login();
         </div>
         </div>
         <!-- start: FOOTER -->
-        <?php include('include/footer.php');?>
                 <!-- end: FOOTER -->
 
                 

@@ -1,6 +1,7 @@
 <?php
 include_once('connection.php');
 
+if(isset($_POST['submit'])){
 
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
@@ -8,7 +9,7 @@ $email = $_POST['email'];
 $a_password = $_POST['password'];
 $phone = $_POST['phone'];
 $gender = $_POST['gender'];
-$a_location= $_POST['location'];
+$a_location = $_POST['location'];
 $dob = $_POST['dob'];
 
 $ret= mysqli_query($conn,"select email from patient where email='$email'");
@@ -19,40 +20,40 @@ if($res){
 }
 
 else{
-$sql ="INSERT INTO patient(firstname, lastname, email, p_password, phone, gender, location, dob) VALUES('$firstname','$lastname','$email','$a_password','$phone','$gender','$a_location','$dob')";
+$sql = "CALL insertData('".$firstname."','".$lastname."','".$email."','".$a_password."','".$phone."','".$gender."','".$a_location."','".$dob."')";
+//  mysqli_query($conn,$sql);
 
-$res = mysqli_query($conn,$sql);
-
-if($res){
+if(mysqli_query($conn,$sql)){
+ 
 // result designs
-echo '<nav class="navbar navbar-expand-md  navbar-dark bg-dark"> 
+// echo '<nav class="navbar navbar-expand-md  navbar-dark bg-dark"> 
 
-<div class="container">
-  <a href="index.html" class="navbar-brand text-warning">&#9855
-    HOSPITAL MANAGEMENT</a>
+// <div class="container">
+//   <a href="index.html" class="navbar-brand text-warning">&#9855
+//     HOSPITAL MANAGEMENT</a>
 
-   <button class="navbar-toggler " type="button" data-toggle="collapse"
-   data-target="#collapsenavbar">
-   <span class="navbar-toggler-icon"></span>
-   </button>
+//    <button class="navbar-toggler " type="button" data-toggle="collapse"
+//    data-target="#collapsenavbar">
+//    <span class="navbar-toggler-icon"></span>
+//    </button>
 
-   <div class="collapse navbar-collapse text-center" id="collapsenavbar">
-     <ul class="navbar-nav ml-auto ">
-       <li class="nav-item">
-         <a href="../index.html" class="nav-link pr-5">HOME</a>
-       </li>                  
-       <li class="nav-item">
-         <a href="../about.html" class="nav-link pr-5">ABOUT</a>
+//    <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+//      <ul class="navbar-nav ml-auto ">
+//        <li class="nav-item">
+//          <a href="../index.html" class="nav-link pr-5">HOME</a>
+//        </li>                  
+//        <li class="nav-item">
+//          <a href="../about.html" class="nav-link pr-5">ABOUT</a>
                       
-        <li class="nav-item ">
-         <a href="../login.html" class="nav-link pr-5">LOGIN</a>
-       </li>
-     </ul>
-   </div>
-</div>
-</nav>
-</div>';
-
+//         <li class="nav-item ">
+//          <a href="../login.html" class="nav-link pr-5">LOGIN</a>
+//        </li>
+//      </ul>
+//    </div>
+// </div>
+// </nav>
+// </div>';
+include('include/n-nav.php');
 echo "<body style='
          min-height: 100vh;
          background: url(https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) center;
@@ -80,6 +81,7 @@ echo"<a href='../login.html'>
       </a>";
 
       mysqli_close($conn);
+     
 }
 
 else{
@@ -87,5 +89,9 @@ else{
 }
 
 
+}
+}
+else{
+  echo"BYE BYE ";
 }
 ?>
